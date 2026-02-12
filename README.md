@@ -4,24 +4,54 @@
 On-Premise Semantic Inspection Service.
 "@ | Out-File -Encoding utf8 README.md
 
-A semantic firewall for LLM applications.
-Fast. Deterministic. Escalable.
+Deterministic Semantic Security Infrastructure for LLM Applications
 
-What it does
+Most LLM-based systems waste 70–90% of compute and tokens processing low-signal, ambiguous, or semantically manipulative inputs.
 
-SSGF sits between users and your LLM and:
+SSGF filters semantic noise before it reaches expensive reasoning models, transforming AI security from probabilistic moderation into deterministic, auditable decision infrastructure.
 
-Detects spam, phishing, prompt injection
+SSGF is not a prompt.
+It is not a content moderation API.
+It is a multi-layer semantic decision gateway.
 
-Scores entropy and manipulation patterns
+What SSGF Does
 
-Classifies semantic intention
+SSGF sits between users and your LLM stack and:
 
-Escalates ambiguous cases to deep analysis
+Detects spam, phishing, credential extraction, and prompt injection
 
-Reduces API cost with smart gating
+Scores structural entropy and manipulation patterns
 
-Works as SDK or Proxy
+Classifies semantic intention deterministically
+
+Escalates only ambiguous cases to deep semantic analysis
+
+Reduces LLM API usage by 70–90%
+
+Enforces decisions at middleware / proxy level
+
+Fast. Deterministic. Scalable.
+
+Architecture Overview
+User / Client
+     │
+     ▼
+SSGF Proxy / SDK
+     │
+     ├─ FAST Pipeline (Local, Deterministic)
+     │     ├ Normalization
+     │     ├ Hard Triggers
+     │     ├ Entropy Scoring
+     │     ├ Intention Heuristics
+     │     └ Decision: ALLOW | WARN | BLOCK | ESCALATE
+     │
+     └─ DEEP Pipeline (Only if ambiguous)
+           ├ Controlled Prompt Bench
+           ├ Semantic Intent Evaluation
+           └ Final Decision Override
+     │
+     ▼
+Protected LLM / Backend
 
 Quickstart (2 minutes)
 npm install llm-entropy-filter
@@ -32,7 +62,7 @@ const result = gate("FREE crypto bonus!!!");
 
 console.log(result);
 
-Output Example
+Example Output
 {
   "action": "WARN",
   "entropy_score": 0.38,
@@ -41,46 +71,117 @@ Output Example
   "confidence": 0.75
 }
 
-4 Ways to Integrate
+Integration Options
+
+SSGF is model-agnostic and deployment-flexible.
 
 1️⃣ Local SDK
-2️⃣ Express middleware
-3️⃣ Reverse proxy
-4️⃣ Hybrid with Deep LLM escalation
 
-Modes
+Embed directly into Node.js services.
 
-FAST (local only)
+gate(text, { ruleset });
 
-DEEP (LLM-assisted)
+2️⃣ Express Middleware
+app.post("/chat", ssgfMiddleware, forwardToLLM);
 
-HYBRID (recommended)
+3️⃣ Reverse Proxy
+Client → SSGF → OpenAI / Anthropic / Ollama
+
+4️⃣ Hybrid Escalation (Recommended)
+
+FAST local triage → DEEP semantic inspection only when needed.
+
+Operating Modes
+FAST (Deterministic Local)
+
+<1–5ms latency
+
+Zero API cost
+
+JSON rulesets
+
+Ideal for high-throughput and edge environments
+
+DEEP (LLM-Assisted)
+
+Triggered only by ambiguity
+
+Uses low-cost or local models (e.g. Ollama, gpt-4o-mini)
+
+Structured JSON-only outputs
+
+Enforces hard security overrides
+
+HYBRID (Recommended)
+
+Determinism first. LLM only if necessary.
 
 Rulesets
 
-Choose:
+Rules are fully configurable via JSON.
 
-default.json → balanced
+default.json → Balanced
 
-strict.json → high security
+strict.json → High-security
 
-custom.json → your own
+custom.json → Domain-specific policies
 
-Benchmarks
+Rules control:
 
-FAST:
+Thresholds
 
-<5ms
+Hard triggers
 
-zero API cost
+Escalation behavior
 
-DEEP:
+Benchmarks (v1.0.0)
 
-300–800ms
+Dataset: 30 curated phishing, spam, and benign cases
+Pipeline: FAST + DEEP (hybrid)
 
-low-cost model recommended
+Metric	Result
+Accuracy	93.3%
+False BLOCK → ALLOW	0
+False ALLOW → BLOCK	0
+Abort rate	1 case
+FAST latency	<5ms
+DEEP latency	300–800ms
+LLM reduction	70–90%
 
-Hybrid reduces LLM usage by 70–90% in typical traffic.
+Benchmarks are reproducible via npm run prompt:bench.
+
+Security Model
+
+SSGF enforces Founded Determinism:
+
+Same input → same output
+
+Decisions based on evidence, not probability
+
+JSON-first, auditable logs
+
+Explicit rationale and flags
+
+Entropy is treated as structural evidence, not model opinion.
+
+What This Is Not
+
+❌ Not a chatbot
+
+❌ Not a moderation prompt
+
+❌ Not a probabilistic classifier
+
+❌ Not cloud-dependent
+
+SSGF is decision infrastructure.
+
+Whitepaper
+
+📄 Semantic Security Gateway Firewall
+A Hybrid Deterministic–Semantic Architecture for LLM Protection
+
+→ See /docs/whitepaper.pdf
 
 Roadmap
 
@@ -90,62 +191,28 @@ Adaptive rulesets
 
 Multi-language phishing detection
 
-Admin dashboard
+Admin dashboard & analytics
 
-Risk analytics
+Enterprise policy packs
 
-📄 3. Whitepaper Corto
-Semantic Security Gateway Firewall
-A Hybrid Deterministic–Semantic Architecture for LLM Protection
-Abstract
+License
 
-Large Language Models are vulnerable not only to syntactic attacks but to semantically disguised manipulation. Traditional moderation relies either on static rules or expensive LLM-based filtering. SSGF proposes a hybrid architecture combining deterministic entropy scoring with ambiguity-triggered deep semantic analysis.
+Licensed under Apache License 2.0.
 
-Problem
+You are free to use, modify, and deploy SSGF commercially or privately.
 
-Heuristic filters fail on ambiguity.
-LLM-only filters are expensive and inconsistent.
+Advisory & Pilots
 
-Example:
+SSGF is free and open-source.
 
-“Send me your verification code.”
+For:
 
-Low entropy. High real-world risk.
+Enterprise pilots
 
-Contribution
+Regulated environments
 
-SSGF introduces:
+Custom rulesets
 
-Entropy-based structural scoring
+Audits and architecture reviews
 
-Intention heuristics
-
-Ambiguity-triggered escalation
-
-Cost-aware semantic override
-
-Middleware-level enforcement
-
-Architecture Innovation
-
-Two-layer model:
-
-Layer 1 – Deterministic Gate
-Layer 2 – Semantic Escalation
-
-Decision flow minimizes cost while preserving security.
-
-Economic Advantage
-
-Reduces LLM moderation calls by 70–90%.
-Maintains high detection precision.
-
-Future Directions
-
-Semantic anomaly embeddings
-
-Multi-agent evaluation
-
-Enterprise dashboard
-
-Open Security Standard
+Advisory support is available.
