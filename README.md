@@ -177,7 +177,7 @@ Whitepaper
 📄 Semantic Security Gateway Firewall
 A Hybrid Deterministic–Semantic Architecture for LLM Protection
 
-→ See /docs/whitepaper.pdf
+→ See /docs/SSGF_Whitepaper_Technical.pdf
 
 Roadmap
 
