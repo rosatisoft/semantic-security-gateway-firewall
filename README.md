@@ -1,4 +1,3 @@
-"@"
 # Semantic Security Gateway Firewall (SSGF)
 
 On-Premise Semantic Inspection Service.
