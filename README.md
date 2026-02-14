@@ -10,6 +10,15 @@ SSGF is not a prompt.
 It is not a content moderation API.
 It is a multi-layer semantic decision gateway.
 
+### The New AI Standard: Ontological Discernment
+
+ACE introduces a deterministic layer of discernment that transforms LLMs
+from probabilistic predictors into axiomatic decision systems.
+
+By separating Truth from Entropy and Reality from Hallucination,
+ACE reduces unnecessary inference, lowers token consumption,
+and preserves creative expression without censorship.
+
 What SSGF Does
 
 SSGF sits between users and your LLM stack and:
