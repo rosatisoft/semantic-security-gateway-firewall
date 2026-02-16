@@ -51,6 +51,34 @@ Instead of asking *“what is likely?”*, ACE asks:
 By separating **Truth from Entropy** and **Reality from Hallucination**,  
 ACE reduces unnecessary inference while preserving valid imagination and art.
 
+ACE (Axiomatic Criterion Engine) introduces a deterministic layer of
+**ontological discernment** that operates *before* probabilistic inference.
+
+Instead of relying solely on likelihood and token prediction,
+ACE evaluates inputs through an axiomatic structure that distinguishes:
+
+- Truth from Entropy  
+- Reality from Hallucination  
+- Valid Context from Ontological Error  
+
+This allows LLM systems to reject, redirect, or contextualize inputs
+*before* expensive reasoning occurs — reducing hallucinations,
+preventing manipulation, and saving significant computation.
+
+ACE is derived from **The Axiom of the Absolute**, a formally published
+ontological framework, and translates its principles into an executable
+discernment layer for AI systems.
+
+**Foundational documents:**
+
+- 📘 **ACE Principles**  
+  → Deterministic axioms governing discernment  
+  [`docs/ACE_PRINCIPLES.md`](docs/ACE_PRINCIPLES.md)
+
+- 🧠 **Theoretical Framework**  
+  → Ontological model, entropy analysis, and context differentiation  
+  [`docs/THEORETICAL_FRAMEWORK.md`](docs/THEORETICAL_FRAMEWORK.md)
+
 ---
 
 ## How SSGF and ACE Work Together
