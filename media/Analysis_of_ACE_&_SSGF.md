@@ -56,4 +56,4 @@ The analysis identifies three critical pain points that ACE/SSGF resolves by des
 
 ---
 
-**[Listen to this episode on Spotify]([https://open.spotify.com/episode/7fRMyXs9zig4AZ2uuBDJh8?si=IqE80PSzRt6LaHm8hllN2g](https://open.spotify.com/episode/2louRIkNh11xTmuiLB5FJd?si=Lg-UGab9Sne7Q551xfx0RA)**
+**[Listen to this episode on Spotify](https://open.spotify.com/episode/2louRIkNh11xTmuiLB5FJd?si=Lg-UGab9Sne7Q551xfx0RA)**
