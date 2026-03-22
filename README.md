@@ -4,6 +4,9 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18654895.svg)](https://doi.org/10.5281/zenodo.18654895)
 
+For the minimum-energy model and experimental validation, see:
+https://github.com/tuusuario/ace-minimum-energy-criterion
+
 ---
 
 ## Why This Exists
